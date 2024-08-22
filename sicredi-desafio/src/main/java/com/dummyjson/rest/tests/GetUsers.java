@@ -3,11 +3,22 @@ package com.dummyjson.rest.tests;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.dummyjson.rest.core.BaseTest;
+import com.dummyjson.rest.helpers.BuscarStatusDaAplicacao;
 
 public class GetUsers extends BaseTest{
+	
+	private BuscarStatusDaAplicacao buscarStatusDaAplicacao;
+	
+	@Before
+    public void setUp() {
+		buscarStatusDaAplicacao = new BuscarStatusDaAplicacao();
+		buscarStatusDaAplicacao.verificarStatusDaAplicacao();
+    }
+	
 	@Test
 	public void deveVerificarStatusDaAplicacao() {
 		given()

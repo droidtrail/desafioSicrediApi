@@ -16,6 +16,7 @@ public class GetUsers extends BaseTest{
 		.then()
 			.log().all()
 			.statusCode(200)
+			.body("users", not(empty()))
 			.body("users.username", everyItem(not(emptyOrNullString())))
 			.body("users.password", everyItem(not(emptyOrNullString())))
 			;

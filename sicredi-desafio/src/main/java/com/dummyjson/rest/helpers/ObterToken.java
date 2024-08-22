@@ -17,7 +17,6 @@ public class ObterToken {
 	                .when()
 	                    .post("/auth/login")
 	                .then()
-	                    .log().all()
 	                    .statusCode(200)
 	                    .body("token", not(empty()))
 	                    .extract().path("token");

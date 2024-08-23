@@ -1,10 +1,8 @@
 package com.dummyjson.rest.tests;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.emptyOrNullString;
-import static org.hamcrest.Matchers.everyItem;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.*;
+
 
 import org.junit.*;
 
@@ -23,17 +21,28 @@ private BuscarStatusDaAplicacao buscarStatusDaAplicacao;
     }
 	
 	@Test
-	public void deveAdicionarProdutosComSucesso() {
+	public void deveAdicionarProdutoComSucesso() {
+		Products prod = new Products();
+		prod.setTitle("hot wheels");
+		prod.setDescription("Desconto na primeira compra");
+		prod.setPrice(1);
+		prod.setDiscountPercentage(9.5);
+		prod.setRating(5.0);
+		prod.setStock(100);
+		prod.setBrand("hot wheels");
+		prod.setCategory("Carros em miniatura");
+		prod.setThumbnail("https://portforward.com/hot-wheels-unleashed/hot-wheels-unleashed-header-large.webp");
+		
 		given()
+			.body(prod)
 		.when()
-			.get("/products/add")
+			.post("/products/add")
+			
 		.then()
 			.log().all()
-			.statusCode(200)
-//			.body("users", not(empty()))
-//			.body("users.username", everyItem(not(emptyOrNullString())))
-//			.body("users.password", everyItem(not(emptyOrNullString())))
+			.statusCode(201)
+			.body("id", not(empty()))
+			.body("title",is("hot wheels"));
 			;
 	}
-
 }

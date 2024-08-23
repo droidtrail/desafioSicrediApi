@@ -1,11 +1,8 @@
 package com.dummyjson.rest.tests;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.emptyOrNullString;
-import static org.hamcrest.Matchers.everyItem;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.*;
+
 
 import org.junit.Before;
 import org.junit.Test;

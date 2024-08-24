@@ -26,7 +26,6 @@ public class GetProducts extends BaseTest {
 		given()
 		.when()
 			.get("/products")
-			
 		.then()
 			.log().all()
 			.statusCode(200)
@@ -34,5 +33,4 @@ public class GetProducts extends BaseTest {
 			.body("products.id", everyItem(not(emptyOrNullString())))
 			;
 	}
-
 }

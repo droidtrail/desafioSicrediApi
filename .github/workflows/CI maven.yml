@@ -31,6 +31,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: Change to the correct directory
+        run: cd sicredi-desafio
+
       - name: Install dependencies and run tests
         run: mvn clean install
 
